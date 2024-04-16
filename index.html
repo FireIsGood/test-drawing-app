@@ -34,28 +34,50 @@
       </nav>
     </header>
     <main class="container">
-      <article class="drawing-app grid">
+      <article class="drawing-app">
         <div id="toolbar">
           <h1>Draw!</h1>
-          <fieldset>
-            <legend>Settings</legend>
-            <label>
-              Stroke
-              <input type="color" id="stroke" />
+          <fieldset id="color-select">
+            <legend>Colors</legend>
+            <label style="--label-clr: #222">
+              <input type="radio" name="color" value="#222" checked />
             </label>
-            <label>
-              Line width
-              <input type="number" id="lineWidth" min="1" value="5" placeholder="5" />
+            <label style="--label-clr: #555">
+              <input type="radio" name="color" value="#555" />
             </label>
-            <button id="clear">Clear</button>
+            <label style="--label-clr: #ddd">
+              <input type="radio" name="color" value="#ddd" />
+            </label>
+            <label style="--label-clr: #fff">
+              <input type="radio" name="color" value="#fff" />
+            </label>
+            <label class="random-clr">
+              <input type="radio" name="color" value="" />
+            </label>
+            <label class="random-clr">
+              <input type="radio" name="color" value="" />
+            </label>
+            <fieldset>
+              <label class="inline">
+                Custom
+                <input type="radio" name="color" value="custom" />
+              </label>
+              <input type="color" id="stroke" value="#5eb28d" />
+            </fieldset>
           </fieldset>
+          <label>
+            Line width
+            <input type="number" id="lineWidth" min="1" value="5" placeholder="5" />
+          </label>
+          <button id="clear">Clear</button>
+          <button id="randomize-colors" class="secondary outline">Randomize Colors</button>
         </div>
         <div>
           <canvas id="drawing-area"></canvas>
         </div>
       </article>
       <p>Here's an accordion you can open to have a scrollbar:</p>
-      <details role="button" class="contrast outline">
+      <details class="contrast outline">
         <summary>Open me!</summary>
         <p>Some text so that it wraps a bunch. Wow!</p>
         <br />

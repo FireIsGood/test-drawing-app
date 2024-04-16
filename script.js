@@ -10,6 +10,7 @@ const canvasRect = () => canvas.getBoundingClientRect();
 
 // Set up global variables
 let isPainting = false;
+let color = "black"; // default
 let lineWidth = 5; // default
 let startX;
 let startY;
@@ -20,6 +21,7 @@ let startY;
 function printState() {
   console.log(`
 isPainting: ${isPainting}
+color: ${color}
 lineWidth: ${lineWidth}
 startX: ${startX}
 startY: ${startY}
@@ -33,6 +35,17 @@ function fixCanvasSize() {
   canvas.height = canvasRect().height;
 }
 
+function randomizeColors() {
+  const inputs = document.querySelectorAll('label.random-clr input[type=radio][name="color"]');
+  inputs.forEach((input) => {
+    const hue = Math.floor(Math.random() * 360);
+    const colorString = `hsl(${hue}, 57.8%, 61%)`;
+    input.value = colorString;
+    input.parentElement.style = `--label-clr: ${colorString}`;
+  });
+}
+randomizeColors();
+
 //! Event Listeners !//
 
 // Fix the screen if the window is resized
@@ -43,28 +56,45 @@ toolbar.addEventListener("click", (e) => {
   if (e.target.id === "clear") {
     canvasContext.clearRect(0, 0, canvasRect().width, canvasRect().height);
   }
+  if (e.target.id === "randomize-colors") {
+    randomizeColors();
+  }
+});
+function updateFromCustomColor() {
+  const customColor = document.getElementById("stroke");
+  canvasContext.strokeStyle = customColor.value;
+}
+let radios = document.querySelectorAll('input[type=radio][name="color"]');
+radios.forEach((radio) => {
+  radio.addEventListener("change", () => {
+    const customColor = document.getElementById("stroke");
+    if (radio.value !== "custom") {
+      customColor.removeEventListener("change", updateFromCustomColor);
+      canvasContext.strokeStyle = radio.value;
+      return;
+    }
+    canvasContext.strokeStyle = customColor.value;
+    // Set up custom color mirroring
+    customColor.addEventListener("change", updateFromCustomColor);
+  });
 });
 toolbar.addEventListener("change", (e) => {
-  if (e.target.id === "stroke") {
-    canvasContext.strokeStyle = e.target.value;
-  }
   if (e.target.id === "lineWidth") {
     lineWidth = e.target.value;
   }
 });
 
-canvas.addEventListener("mousedown", (e) => {
+// Mouse movements
+window.addEventListener("mousedown", (e) => {
   isPainting = true;
   startX = e.clientX;
   startY = e.clientY;
 });
-
-canvas.addEventListener("mouseup", () => {
+window.addEventListener("mouseup", () => {
   isPainting = false;
   canvasContext.stroke();
   canvasContext.beginPath();
 });
-
 canvas.addEventListener("mousemove", draw);
 
 // Draw loop

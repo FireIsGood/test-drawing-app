@@ -39,14 +39,43 @@ details[role="button"] {
 
 /* Drawing app */
 .drawing-app {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 2rem;
+  user-select: none;
+}
+
+#color-select input[type="radio"] {
+  display: none;
+}
+
+#toolbar label:has(input[type="radio"]) {
+  background-color: var(--label-clr);
+  outline: 1px dashed var(--pico-primary);
+  outline-offset: 1px;
+  min-width: 2em;
+  min-height: 2em;
+}
+
+#toolbar label:has(input:checked) {
+  outline-width: 2px;
+  outline-style: solid;
 }
 
 #toolbar input {
+  max-width: 10ch;
+
   &[type="color"] {
-    height: 2rem;
+    height: 1.4em;
     width: 3rem;
     padding: 4px;
+    margin: 0;
   }
+}
+
+#toolbar label.inline {
+  display: inline;
+  margin-inline-end: 1ch;
 }
 
 canvas {
