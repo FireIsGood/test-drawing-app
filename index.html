@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <!--=== HTML Meta Tags ===-->
+    <title>Drawing App</title>
+    <meta name="description" content="DESCRIPTION HERE!" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <!--=== Favicon ===-->
+    <link rel="icon" href="https://fav.farm/🎨" />
+    <!--=== CDN links ===-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="container">
+      <!-- NOTE: Style the logo class -->
+      <div class="logo"><a href="./" class="contrast">Drawing App</a></div>
+    </header>
+    <main class="container">
+      <!-- NOTE: Style the hero as some full-screen effect -->
+      <section class="hero">
+        <h1>Drawing App</h1>
+        <p>I like drawing</p>
+      </section>
+      <article class="drawing-app grid">
+        <div id="toolbar">
+          <h2>Draw!</h2>
+          <fieldset>
+            <legend>Settings</legend>
+            <label>
+              Stroke
+              <input type="color" id="stroke" />
+            </label>
+            <label>
+              Line width
+              <input
+                type="number"
+                id="lineWidth"
+                min="1"
+                value="5"
+                placeholder="5"
+              />
+            </label>
+            <button id="clear">Clear</button>
+          </fieldset>
+        </div>
+        <div>
+          <canvas id="drawing-area"></canvas>
+        </div>
+      </article>
+      <p>Here's an accordion you can open to have a scrollbar:</p>
+      <details role="button" class="contrast outline">
+        <summary>Open me!</summary>
+        <p>Some text so that it wraps a bunch. Wow!</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>It all comes to a close...</p>
+      </details>
+    </main>
+    <!-- NOTE: Change footer font size to fixed 14px and make it a horizontal flex -->
+    <footer class="container">
+      <p>Created with 🔥 by FireIsGood</p>
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>

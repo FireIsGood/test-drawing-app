@@ -1,0 +1,48 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+footer {
+  font-size: 14px;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+h1 {
+  background: #7f7fd5;
+  background: linear-gradient(to right, #008493, #067db8, #6e68bd);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.5;
+}
+
+details[role="button"] {
+  text-align: left;
+}
+
+/* Drawing app */
+.drawing-app {
+}
+
+#toolbar input {
+  &[type="color"] {
+    height: 2rem;
+    width: 3rem;
+    padding: 4px;
+  }
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  outline: 1px solid black;
+}
