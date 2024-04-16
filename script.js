@@ -46,6 +46,13 @@ function randomizeColors() {
 }
 randomizeColors();
 
+function download() {
+  let link = document.createElement("a");
+  link.download = "canvas_export.png";
+  link.href = canvas.toDataURL();
+  link.click();
+}
+
 //! Event Listeners !//
 
 // Fix the screen if the window is resized
@@ -58,6 +65,9 @@ toolbar.addEventListener("click", (e) => {
   }
   if (e.target.id === "randomize-colors") {
     randomizeColors();
+  }
+  if (e.target.id === "download") {
+    download();
   }
 });
 function updateFromCustomColor() {
