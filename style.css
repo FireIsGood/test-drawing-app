@@ -8,12 +8,20 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
 footer {
   font-size: 14px;
 }
 
-.logo {
+.logo a {
   font-size: 1.5rem;
+  text-decoration: none;
 }
 
 h1 {
